@@ -3,4 +3,4 @@ __pycache__/
 .ipynb_checkpoints/
 .env
 *.pkl
-ml_engine/mlruns/
+src/mlruns/
