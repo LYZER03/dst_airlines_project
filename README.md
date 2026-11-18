@@ -22,19 +22,23 @@ Ce projet de bout en bout (Data Engineering & MLOps) vise à prédire les retard
 
 # Architecture du Projet
 
-Le projet est structuré selon les standards de l'industrie (Microservices) :
+Le projet est structuré selon les standards de l'industrie (Clean Architecture / Data Engineering) :
 ```
 dst_airlines_project/
-├── api/                # Backend For Frontend (BFF) sécurisé avec FastAPI
-├── dashboard/          # Interface utilisateur Dash et assets (CSS)
-├── docs/               # Documentation et images (diagrammes, métriques)
-├── etl_batch/          # Scripts d'ingestion et transformation (Bronze/Silver/Gold)
-├── ml_engine/          # Entraînement du modèle XGBoost et tracking MLflow
-├── notebooks/          # Notebooks Jupyter de recherche et d'exploration
-├── streaming_kafka/    # Scripts Producer et Consumer pour le flux temps réel
-├── tests_utils/        # Scripts de tests unitaires et de vérification
-├── docker-compose.yml  # Orchestration de l'infrastructure
-└── Dockerfile          # Conteneurisation de l'API Backend
+├── .github/workflows/     # CI/CD (Pipelines de test et déploiement automatique)
+├── docs/                  # Documentation et images (diagrammes, métriques)
+├── infra/                 # Scripts d'infrastructure et configurations
+├── src/                   # Code source principal du projet
+│   ├── api/               # Backend sécurisé avec FastAPI
+│   ├── dashboard/         # Interface utilisateur Dash et assets (CSS)
+│   ├── dags/              # Orchestration des pipelines (Airflow / Tâches)
+│   ├── ingestion/         # Ingestion streaming (Kafka) et batch (Bronze/Silver/Gold)
+│   └── ml_engine/         # Entraînement des modèles et tracking MLflow
+├── tests/                 # Scripts de tests unitaires et vérification de la qualité
+├── notebooks/             # Notebooks Jupyter de recherche et d'exploration
+├── .env.example           # Template des variables d'environnement
+├── docker-compose.yml     # Orchestration de l'infrastructure locale
+└── Dockerfile             # Conteneurisation de l'application
 ```
 
 # Sécurité de l'API (BFF)
