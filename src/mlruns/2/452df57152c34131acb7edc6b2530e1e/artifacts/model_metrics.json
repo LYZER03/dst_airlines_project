@@ -1,0 +1,41 @@
+{
+  "classification": {
+    "XGBoost optimis\u00e9": {
+      "f1": 0.6899209867026402,
+      "precision": 0.6302816901408451,
+      "recall": 0.7620263942103023,
+      "accuracy": 0.8435889958199669,
+      "auc_roc": 0.8726387753278628
+    },
+    "Random Forest": {
+      "f1": 0.630659253375695,
+      "precision": 0.8340336134453782,
+      "recall": 0.5070242656449553,
+      "accuracy": 0.8643919510061242,
+      "auc_roc": 0.8674680615982892
+    },
+    "XGBoost": {
+      "f1": 0.6880185220914529,
+      "precision": 0.6291460832745236,
+      "recall": 0.7590464027245637,
+      "accuracy": 0.8428113152522602,
+      "auc_roc": 0.8731368885791235
+    }
+  },
+  "regression": {
+    "Random Forest": {
+      "mae": 14.163341332348663,
+      "rmse": 18.881833567647426,
+      "r2": 0.3020740476905862
+    },
+    "XGBoost": {
+      "mae": 14.651359234285183,
+      "rmse": 18.212778312964723,
+      "r2": 0.35065811107235756
+    }
+  },
+  "best_regressor": "Random Forest",
+  "split": "temporal (Jan-Ao\u00fbt train | Sep test)",
+  "train_size": 81022,
+  "test_size": 10287
+}

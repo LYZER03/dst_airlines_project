@@ -1,0 +1,44 @@
+artifact_path: /home/ubuntu/dst_airlines_project/mlruns/2/models/m-e2089aca5dd34f5eb7b5ace02cfcfcf3/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.3
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.11.1
+model_id: m-e2089aca5dd34f5eb7b5ace02cfcfcf3
+model_size_bytes: 1104985
+model_uuid: m-e2089aca5dd34f5eb7b5ace02cfcfcf3
+prompts: null
+run_id: 452df57152c34131acb7edc6b2530e1e
+signature:
+  inputs: '[{"type": "long", "name": "visibility_m", "required": true}, {"type": "double",
+    "name": "wind_gusts_kmh", "required": true}, {"type": "double", "name": "wind_kmh",
+    "required": true}, {"type": "double", "name": "temp_c", "required": true}, {"type":
+    "long", "name": "hourly_flight_count", "required": true}, {"type": "long", "name":
+    "daily_flight_count", "required": true}, {"type": "long", "name": "arrival_hour",
+    "required": true}, {"type": "long", "name": "duration_min", "required": true},
+    {"type": "double", "name": "arrival_hour_sin", "required": true}, {"type": "double",
+    "name": "arrival_hour_cos", "required": true}, {"type": "double", "name": "day_sin",
+    "required": true}, {"type": "double", "name": "day_cos", "required": true}, {"type":
+    "double", "name": "month_sin", "required": true}, {"type": "double", "name": "month_cos",
+    "required": true}, {"type": "double", "name": "aircraft_delay_rate_7d", "required":
+    true}, {"type": "double", "name": "route_delay_rate_30d", "required": true}, {"type":
+    "long", "name": "is_weekend", "required": true}, {"type": "long", "name": "is_holiday",
+    "required": true}, {"type": "long", "name": "is_lvp", "required": true}, {"type":
+    "long", "name": "is_high_wind", "required": true}, {"type": "long", "name": "is_peak_hour",
+    "required": true}, {"type": "string", "name": "origin_airport", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-06-11 12:58:45.188666'
