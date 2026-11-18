@@ -1,0 +1,1 @@
+SELECT COUNT(*) FROM gold_ml_features;

@@ -1,0 +1,23 @@
+# --- Ingénierie de données ---
+pandas
+pymongo
+requests
+holidays
+pytest
+python-dotenv
+dbt-postgres
+pyspark
+
+# --- API et Web ---
+fastapi
+uvicorn
+
+# --- Dashboarding ---
+dash
+plotly
+
+# --- Machine Learning ---
+scikit-learn
+mlflow
+xgboost
+jupyterlab

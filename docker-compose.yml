@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # notre BDD principale
+  mongodb:
+    image: mongo:latest
+    container_name: dst_mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    restart: unless-stopped
+
+  # Une interface web pour voir nos bases (optionnelle mais génial)
+  mongo-express:
+    image: mongo-express
+    container_name: dst_mongo_express
+    restart: always
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongodb
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+      ME_CONFIG_BASICAUTH_USERNAME: dst_admin
+      ME_CONFIG_BASICAUTH_PASSWORD: dst_password123
+    depends_on:
+      - mongodb
+
+  # pour la cordination des clusters kafka
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.4.0
+    container_name: dst_zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    restart: unless-stopped
+
+  # Kafka
+  kafka:
+    image: confluentinc/cp-kafka:7.4.0
+    container_name: dst_kafka
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    depends_on:
+      - zookeeper
+    restart: unless-stopped
+
+  # PostgreSQL pour stocker les données relationnelles
+  postgres:
+    image: postgres:16
+    container_name: dst_postgres
+    environment:
+      POSTGRES_USER: dst_admin 
+      POSTGRES_PASSWORD: dst_password123
+      POSTGRES_DB: dst_db
+    ports:
+      - "5432:5432" 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  
+  jupyter:
+    build: .
+    container_name: dst_jupyter
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./notebooks:/home/jovyan/work
+    environment:
+      - JUPYTER_TOKEN=dst_token_2025
+    depends_on:
+      - postgres
+
+volumes:
+  mongodb_data:
+    name: dst_mongodb_data
+  postgres_data:
+    name: dst_postgres_data
